@@ -100,3 +100,83 @@ stateDiagram-v2
     NumericalOptimization --> PositionOutput
     PositionOutput --> [*]
 ```
+
+
+# 2D Stewart Platform Forward Kinematics Analysis
+
+## Overview
+This project implements numerical solutions for the forward kinematics problem of a simplified 2D Stewart Platform. The code analyzes platform positions, computes strut configurations, and visualizes platform poses.
+
+```mermaid
+graph TD
+    A[Platform Parameters] --> B[Forward Kinematics]
+    B --> C[Numerical Solution]
+    C --> D[Position Analysis]
+    D --> E[Visualization]
+```
+
+## Features
+- Forward kinematics solver for 2D Stewart Platform
+- Multiple pose analysis and visualization
+- Root-finding using Bisection Method
+- Convergence rate analysis
+- Parameter space exploration
+- Interactive visualizations
+
+## Mathematical Model
+
+### Platform Parameters
+- L1, L2, L3: Triangle side lengths
+- γ: Angle opposite to L1
+- p1, p2, p3: Variable strut lengths
+- (x1, x2, y2): Fixed base coordinates
+
+### Key Equations
+```mermaid
+graph LR
+    A[Input: Strut Lengths] --> B[Geometric Constraints]
+    B --> C[Non-linear System]
+    C --> D[Numerical Solution]
+    D --> E[Platform Position]
+```
+
+## Implementation Details
+
+### Core Functions
+1. `stewart_theta(theta)`: Computes platform position for given angle
+2. `forward_kinematics(theta)`: Implements forward kinematics equations
+3. `bisection_method()`: Root-finding implementation
+4. `convergence_analysis()`: Studies solution convergence
+
+### Analysis Capabilities
+1. Multiple pose identification
+2. Parameter space exploration
+3. Convergence rate calculation
+4. Stability analysis
+
+## Results & Analysis
+
+### Key Findings
+1. **Pose Variations**:
+   - 2 poses at p2 = 4
+   - 4 poses at p2 = 5
+   - 6 poses at p2 = 7
+
+2. **Convergence Analysis**:
+   ```mermaid
+   graph TD
+       A[Initial Guess] --> B[Convergence Check]
+       B --> |Converged| C[Solution Found]
+       B --> |Not Converged| D[Update Guess]
+       D --> B
+   ```
+
+### Parameter Space
+Different p2 values yield varying numbers of valid poses:
+- p2 < 3: No valid poses
+- 3 ≤ p2 ≤ 4: Two poses
+- 4 < p2 ≤ 6: Four poses
+- 6 < p2 ≤ 8: Six poses
+
+
+
